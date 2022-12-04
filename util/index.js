@@ -70,13 +70,21 @@ const questions = [
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, err => {
         if (err) {
-            throw err;
+            return console.log(err)
+        } else {
+            console.log("success")
         }
     });
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions)
+        .then(function(data) {
+            writeToFile("README.md", generateMarkdown(data));
+            console.log(data)
+        })
+}
 
 // Function call to initialize app
 init();

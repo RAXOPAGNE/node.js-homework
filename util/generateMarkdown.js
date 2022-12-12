@@ -60,10 +60,10 @@ function generateMarkdown(data, licenseChoice) {
   *[Questions](#Questions)
 
   ## Description
-  ${Data.Description}
+  ${data.Description}
 
   ## Installation
-  You install this project by ${data.Install}
+  You install this project by ${data.Installation}
 
   ## Instructions
   You use this project by ${data.Instructions}
@@ -82,7 +82,7 @@ function generateMarkdown(data, licenseChoice) {
 
   Github:[${data.GitHub}](https://github.com/${data.GitHub})
 
-  Email:[${data.Email}](mailto:${data.Email})
+  Email:[${data.Questions}](mailto:${data.Questions})
 
 `;
 }

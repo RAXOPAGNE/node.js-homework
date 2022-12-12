@@ -24,7 +24,7 @@ function renderLicenseBadge(license) {
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
   if (license !== 'None') {
-    return `\n* [License](#license)\n`;
+    return `[License](#license)`;
   }
   return '';
 
@@ -32,35 +32,31 @@ function renderLicenseLink(license) {
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license, licenseChoice) {
+function renderLicenseSection(license) {
   if(license == "None"){
     return "";
    }
 
-   var badge =renderLicenseBadge(license, licenseChoice);
-   var link =renderLicenseLink(license,renderLicenseLink);
+   var badge =renderLicenseBadge(license);
+   var link =renderLicenseLink(license);
 
    return badge + " \r" + link + " ";
 }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data, licenseChoice) {
-  var sec = renderLicenseSection(data.license, licenseChoice)
+function generateMarkdown(data) {
+  var sec = renderLicenseSection(data.License)
   return `
-  # 
-  ${data.title} ${renderLicenseBadge(data.License)}
-  ${sec}
-  # Contents table
-  *[Description](#Description)
-  *[Installation}(#Install)
-  *[Instruction](#Instructions)
-  *[Contributors](#Contributors)
-  *[Test](#Test)
-  *${renderLicenseLink}
-  *[Questions](#Questions)
-
+  ${data.Title} 
   ## Description
   ${data.Description}
+  ## Contents table
+  * [Installation](#Install)
+  * [Instruction](#Instructions)
+  * ${renderLicenseLink(data.License)}
+  * [Contributors](#Contributors)
+  * [Test](#Test)
+  * [Questions](#Questions)
 
   ## Installation
   You install this project by ${data.Installation}
@@ -68,21 +64,22 @@ function generateMarkdown(data, licenseChoice) {
   ## Instructions
   You use this project by ${data.Instructions}
 
+  ## License
+  This project uses the following licenses ${data.License}
+  ${sec}
+
   ## Contributors
-   Please list the Contributors ${data.Contributors}
+  Please list the Contributors ${data.Contributors}
 
   ## Test
   This is how you run a test ${data.Test}
 
-  ## License
-  This project uses the following licenses ${data.License}
-
   ## Questions 
   Any questions contact me here: 
 
-  Github:[${data.GitHub}](https://github.com/${data.GitHub})
+  GitHub: [${data.GitHub}](https://github.com/${data.GitHub})
 
-  Email:[${data.Questions}](mailto:${data.Questions})
+  Email: @[${data.Questions}](mailto:${data.Questions})
 
 `;
 }
